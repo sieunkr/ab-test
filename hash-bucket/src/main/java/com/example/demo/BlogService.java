@@ -22,11 +22,13 @@ public class BlogService {
 
         Assert.notNull(ctx.getUuid(), "UUID must not be null");
 
-        int bucketNumber = bucketComponent.getBucketNumberById(ctx.getUuid());
+        ctx.setBucketNumber(bucketComponent.getBucketNumberByUUID(ctx.getUuid()));
 
-        log.info("Bucket Number:" + bucketNumber);
+        List<String> taskList = testInfoRepository.getTestInfoByBucketNumber(ctx);
 
-        List<String> taskList = testInfoRepository.getTestInfoByBucketNumber(bucketNumber);
+        log.info("Session ID : " + ctx.getUuid());
+        log.info("Bucket Number : " + ctx.getBucketNumber());
+        log.info("Test Variant : " + ctx.getVariant());
 
         run(taskList, ctx);
 

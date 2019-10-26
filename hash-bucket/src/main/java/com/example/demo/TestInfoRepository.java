@@ -25,11 +25,13 @@ public class TestInfoRepository {
     }
 
 
-    public List<String> getTestInfoByBucketNumber(int bucketNumber) {
+    public List<String> getTestInfoByBucketNumber(Context ctx) {
 
-        if (IntStream.rangeClosed(0, 94).boxed().collect(Collectors.toList()).contains(bucketNumber)) {
+        if (IntStream.rangeClosed(0, 94).boxed().collect(Collectors.toList()).contains(ctx.getBucketNumber())) {
+            ctx.setVariant("A");
             return map.get("A").getComponents();
-        } else if (IntStream.rangeClosed(95, 99).boxed().collect(Collectors.toList()).contains(bucketNumber)) {
+        } else if (IntStream.rangeClosed(95, 99).boxed().collect(Collectors.toList()).contains(ctx.getBucketNumber())) {
+            ctx.setVariant("B");
             return map.get("B").getComponents();
         }
 
