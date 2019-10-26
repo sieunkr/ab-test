@@ -24,7 +24,7 @@ public class TestInfoRepository {
         map.put("B", TestInfo.builder().name("B").rate(5).components(Arrays.asList("blogImageComponent")).build());
     }
 
-
+    //TODO: 리팩토링(매직넘버, Stream API 구문 개선 등)
     public List<String> getTestInfoByBucketNumber(Context ctx) {
 
         if (IntStream.rangeClosed(0, 94).boxed().collect(Collectors.toList()).contains(ctx.getBucketNumber())) {
@@ -36,5 +36,9 @@ public class TestInfoRepository {
         }
 
         return Collections.emptyList();
+    }
+
+    private void updateTestInfo(){
+        //TODO: 테스트 정보 업데이트
     }
 }

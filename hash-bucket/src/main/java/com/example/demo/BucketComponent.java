@@ -16,10 +16,8 @@ public class BucketComponent implements BucketUseCase {
     @Override
     public int getBucketNumberByUUID(String uuid) {
 
-
         //TODO: 해당 샘플에서, 버킷 번호를 구하는 방법이 중요하지는 않음
-        // 0 ~ 99 의 범위 반환, 동일한 id 인 경우 일관된 값을 반환해 줌
-
+        // 0 ~ 99 의 범위 반환, 동일한 id 인 경우 항상 일관 된 버킷 번호를 반환해 줌
         //return Math.abs(uuid.hashCode()) % 100;
 
         return Hashing.consistentHash(

@@ -10,6 +10,9 @@ public class BlogTextComponent implements Consumer<Context> {
 
     @Override
     public void accept(Context context) {
+
+        Assert.notNull(context, "context must not be null");
+
         context.getList().add(Article.builder()
                 .name("썸네일 텍스트 기사")
                 .description("테스트")
